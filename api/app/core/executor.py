@@ -24,9 +24,9 @@ LANGUAGE_IMAGES = {
 }
 
 RUN_COMMANDS = {
-    "python": ["python3", "-c"],
-    "javascript": ["node", "-e"],
-    "node": ["node", "-e"],
+    "python": ["-c"],
+    "javascript": ["-e"],
+    "node": ["-e"],
 }
 
 MEMORY_LIMIT = "128m"
