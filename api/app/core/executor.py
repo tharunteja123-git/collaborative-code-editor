@@ -24,7 +24,7 @@ LANGUAGE_IMAGES = {
 }
 
 RUN_COMMANDS = {
-    "python": ["-c"],
+    "python": ["python3", "-c"],
     "javascript": ["-e"],
     "node": ["-e"],
 }

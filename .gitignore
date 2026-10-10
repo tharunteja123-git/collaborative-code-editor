@@ -1,0 +1,42 @@
+# Environment files and secrets
+
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Python virtual environments
+
+venv/
+.venv/
+**/venv/
+**/.venv/
+
+# Python generated files
+
+**pycache**/
+**/**pycache**/
+*.py[cod]
+
+# Node.js dependencies
+
+node_modules/
+**/node_modules/
+
+# Frontend build output
+
+dist/
+**/dist/
+
+# Logs
+
+*.log
+
+# IDE and operating system files
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
