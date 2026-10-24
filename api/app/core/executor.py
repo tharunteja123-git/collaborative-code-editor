@@ -1,14 +1,4 @@
-"""
-Sandboxed code execution via Docker.
 
-Each run spins up a fresh, isolated container with:
-- a hard memory cap (default 128MB)
-- a hard CPU cap (default 0.5 cores)
-- no network access
-- a wall-clock timeout (default 5s), enforced from the host side
-  (in case the in-container process ignores SIGTERM)
-- the container is always removed after the run (no state persists between runs)
-"""
 import time
 import docker
 from docker.errors import ContainerError, APIError
