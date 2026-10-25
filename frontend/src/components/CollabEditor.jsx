@@ -13,11 +13,6 @@ function randomColor() {
   return CURSOR_COLORS[Math.floor(Math.random() * CURSOR_COLORS.length)];
 }
 
-/**
- * roomId   - the Yjs doc name; all clients on the same roomId see the same document
- * language - Monaco syntax highlighting language
- * userName - shown next to this user's live cursor to other collaborators
- */
 export default function CollabEditor({ roomId, language = "python", userName = "Anonymous", onReady }) {
   const editorContainerRef = useRef(null);
   const editorRef = useRef(null);
@@ -42,9 +37,6 @@ export default function CollabEditor({ roomId, language = "python", userName = "
     });
     editorRef.current = editor;
 
-    // 2. Create the Yjs CRDT document and connect it to the sync server.
-    //    All conflict resolution for concurrent edits happens inside Yjs —
-    //    we never have to write merge logic ourselves.
     const ydoc = new Y.Doc();
     ydocRef.current = ydoc;
 
@@ -63,10 +55,6 @@ export default function CollabEditor({ roomId, language = "python", userName = "
       setConnectedUsers(provider.awareness.getStates().size);
     });
 
-    // 4. Bind the Yjs shared text type to the Monaco editor model.
-    //    From here on, every keystroke is automatically synced to all
-    //    other clients via CRDT updates — this is the "no manual merge
-    //    logic" payoff of using Yjs.
     const yText = ydoc.getText("monaco");
     const binding = new MonacoBinding(
       yText,
