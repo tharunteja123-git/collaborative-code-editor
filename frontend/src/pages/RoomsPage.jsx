@@ -8,6 +8,8 @@ export default function RoomsPage() {
   const [rooms, setRooms] = useState([]);
   const [name, setName] = useState("");
   const [language, setLanguage] = useState("python");
+  const [creating, setCreating] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -81,3 +83,6 @@ export default function RoomsPage() {
     </div>
   );
 }
+
+
+
