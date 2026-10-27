@@ -6,7 +6,6 @@ import { WebsocketProvider } from "y-websocket";
 
 const SYNC_SERVER_URL = "ws://localhost:1234";
 
-// A small palette so each connected user gets a distinct cursor color.
 const CURSOR_COLORS = ["#f87171", "#60a5fa", "#34d399", "#fbbf24", "#a78bfa", "#f472b6"];
 
 function randomColor() {
@@ -26,7 +25,7 @@ export default function CollabEditor({ roomId, language = "python", userName = "
   useEffect(() => {
     if (!editorContainerRef.current) return;
 
-    // 1. Create the Monaco editor instance
+
     const editor = monaco.editor.create(editorContainerRef.current, {
       value: "",
       language,
@@ -45,7 +44,7 @@ export default function CollabEditor({ roomId, language = "python", userName = "
 
     provider.on("status", ({ status }) => setSyncStatus(status)); // "connected" | "disconnected"
 
-    // 3. Set this user's presence (name + cursor color) so others can see who's who
+  
     provider.awareness.setLocalStateField("user", {
       name: userName,
       color: randomColor(),
@@ -64,8 +63,7 @@ export default function CollabEditor({ roomId, language = "python", userName = "
     );
     bindingRef.current = binding;
 
-    // Hand the parent a stable way to read the current editor contents
-    // (used by the "Run" button) without reaching into globals.
+  
     if (onReady) {
       onReady({ getValue: () => editor.getValue() });
     }
