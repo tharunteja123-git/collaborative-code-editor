@@ -1,6 +1,6 @@
-export default function OutputPanel({ result, running }) {
-  return (
-    <div className="h-full bg-black text-gray-100 font-mono text-sm p-3 overflow-auto">
+export default function OutputPanel({ result,running }) {
+    return(
+         <div className="h-full bg-black text-gray-100 font-mono text-sm p-3 overflow-auto">
       {running && <div className="text-yellow-400">Running in sandbox…</div>}
 
       {!running && !result && (
