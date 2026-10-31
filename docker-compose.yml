@@ -65,11 +65,10 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "3000:80"
+      - "3001:80"
     depends_on:
       - api
       - sync-server
 
 volumes:
   pgdata:
-
