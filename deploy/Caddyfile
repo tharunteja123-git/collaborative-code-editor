@@ -1,0 +1,22 @@
+
+{$DOMAIN} {
+	encode gzip
+
+	# /api/... -> FastAPI (prefix is stripped, so /api/auth/login reaches /auth/login)
+	handle_path /api/* {
+		reverse_proxy api:8000
+	}
+
+	# /sync/<room> -> Yjs WebSocket server (Caddy proxies WebSocket upgrades automatically)
+	handle_path /sync/* {
+		reverse_proxy sync-server:1234
+	}
+
+	# Everything else is the React app; unknown paths fall back to index.html
+	# so client-side routes like /rooms/abc123 work on refresh.
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+}
